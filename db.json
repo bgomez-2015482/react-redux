@@ -1,0 +1,14 @@
+{
+  "productos": [
+    {
+      "nombre": "Carne Asada",
+      "precio": 20,
+      "id": 2
+    },
+    {
+      "nombre": "fsd",
+      "precio": 23,
+      "id": 3
+    }
+  ]
+}
