@@ -7,7 +7,11 @@ import {
     DESCARGA_PRODUCTOS_ERROR,
     OBTENER_PRODUCTO_ELIMINAR,
     PRODUCTO_ELIMINAR_EXITO,
-    PRODUCTO_ELIMINAR_ERROR
+    PRODUCTO_ELIMINAR_ERROR,
+    OBTENER_PRODUCTO_EDITAR,
+    COMENZAR_EDICION_PRODUCTO,
+    PRODUCTO_EDITAR_EXITO,
+    PRODUCTO_EDITAR_ERROR
 } from '../types'
 
 import clienteAxios from '../config/axios';
@@ -127,3 +131,44 @@ const eliminarProductoError = () => ({
     type: PRODUCTO_ELIMINAR_ERROR,
     payload: true
 });
+
+// COLOCAR PRODUCTO EN EDICIÓN
+export function obtenerProductoEditar(producto) {
+    return (dispatch) => {
+        dispatch( obtenerProductoEditarAction(producto) )
+    }
+}
+
+const obtenerProductoEditarAction = producto => ({
+    type: OBTENER_PRODUCTO_EDITAR,
+    payload: producto
+})
+
+// EDITA UN REGISTRO EN LA API Y STATE
+export function editarProductoAction(producto) {
+    return async (dispatch) => {
+        dispatch( editarProducto() );
+        try {
+            await clienteAxios.put(`productos/${producto.id}`, producto);
+            dispatch( editarProductoExito(producto) )
+        } catch (error) {
+            console.log(error);
+            dispatch( editarProductoError() )
+        }
+    }
+}
+
+const editarProducto = producto => ({
+    type: COMENZAR_EDICION_PRODUCTO
+});
+
+const editarProductoExito = producto => ({
+    type: PRODUCTO_EDITAR_EXITO,
+    payload: producto
+});
+
+const editarProductoError = () => ({
+    type: PRODUCTO_EDITAR_ERROR,
+    payload: true
+});
+

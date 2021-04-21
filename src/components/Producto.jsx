@@ -1,10 +1,10 @@
 import React from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import Swal from 'sweetalert2';
 
 // REDUX
 import { useDispatch } from 'react-redux';
-import { borrarProdcuctoAction } from '../actions/productoActions';
+import { borrarProdcuctoAction, obtenerProductoEditar } from '../actions/productoActions';
 
 const Producto = ({ producto }) => {
     const { nombre, precio, id } = producto
@@ -35,6 +35,7 @@ const Producto = ({ producto }) => {
 
     //FUNCION QUE REDIRIGE DE FORMA PROGRAMADA
     const redireccionarEdicion = producto => {
+        dispatch(obtenerProductoEditar(producto));
         history.push(`/productos/editar/${producto.id}`)
     }
 

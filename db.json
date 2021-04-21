@@ -2,13 +2,23 @@
   "productos": [
     {
       "nombre": "Carne Asada",
-      "precio": 20,
+      "precio": "25",
       "id": 2
     },
     {
-      "nombre": "fsd",
-      "precio": 23,
+      "nombre": "Sandia",
+      "precio": "20",
       "id": 3
+    },
+    {
+      "nombre": "Pollo Asado",
+      "precio": "30",
+      "id": 4
+    },
+    {
+      "nombre": "1",
+      "precio": 2,
+      "id": 5
     }
   ]
 }
